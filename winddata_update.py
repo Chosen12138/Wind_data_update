@@ -61,6 +61,7 @@ option_info = w.wset("optioncontractbasicinfo","startdate={};enddate={};exchange
 df_option_info = pd.DataFrame(option_info.Data).T
 df_option_info.columns = [x.lower() for x in option_info.Fields]
 df_option_info.loc[:,'code'] = df_option_info.wind_code
+df_option.limit_month = pd.to_datetime(df_option.limit_month)
 df_option_info.drop(columns = ['wind_code','trade_code'], inplace = True)
 df_option_info.loc[:,'date'] = df_option_info.listed_date
 
